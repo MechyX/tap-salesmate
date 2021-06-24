@@ -84,6 +84,12 @@ class salesmateStream(RESTStream):
             
             pcont_id, pcomp_id, owner_id = None, None, None
             
+            if self.name == 'Activity':
+                if 'relatedToId' in row:
+                    if row['relatedToId'] != '':
+                        row['relatedToId'] = str(row['relatedToId']) 
+                        
+
             if 'PrimaryCompany' in row and bool(row['PrimaryCompany']):
                 pcomp_id = row['PrimaryCompany']['id']
                 row.pop('PrimaryCompany', None)
