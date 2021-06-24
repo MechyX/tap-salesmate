@@ -78,7 +78,9 @@ class salesmateStream(RESTStream):
         for row in data:
             if date_key in row and row[date_key] != '':
                 row[date_key] = self.convert_date_format(row[date_key], API_DATE_FORMAT, RFC_DATE_FORMAT)
-            
+            elif date_key in row and row[date_key] == '':
+                row[date_key] = None
+                
             row['lastModifiedAt'] = self.convert_date_format(row['lastModifiedAt'], API_DATE_FORMAT, RFC_DATE_FORMAT)
             row.pop('Followers', None)
             
