@@ -56,7 +56,7 @@ class ActivityStream(salesmateStream):
         th.Property("title", th.StringType),
         th.Property("lastModifiedAt", th.DateTimeType),
         th.Property("dueDate", th.DateTimeType),
-        th.Property("type", th.IntegerType),
+        th.Property("type", th.StringType),
         th.Property("tags", th.StringType),
         th.Property("PrimaryContactId", th.NumberType),
         th.Property("OwnerId", th.NumberType),
