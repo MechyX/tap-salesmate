@@ -93,15 +93,20 @@ class salesmateStream(RESTStream):
             if 'PrimaryCompany' in row and bool(row['PrimaryCompany']):
                 pcomp_id = row['PrimaryCompany']['id']
                 row.pop('PrimaryCompany', None)
-                row['PrimaryCompanyId'] = pcomp_id
+            
+            row['PrimaryCompanyId'] = pcomp_id
+            
             if 'PrimaryContact' in row and bool(row['PrimaryContact']):
                 pcont_id = row['PrimaryContact']['id']
                 row.pop('PrimaryContact', None)
-                row["PrimaryContactId"] = pcont_id
+            
+            row["PrimaryContactId"] = pcont_id
+            
             if 'Owner' in row and bool(row['Owner']):
                 owner_id = row['Owner']['id']
                 row.pop('Owner', None) 
-                row["OwnerId"] = owner_id  
+            
+            row["OwnerId"] = owner_id  
 
             yield row
 
