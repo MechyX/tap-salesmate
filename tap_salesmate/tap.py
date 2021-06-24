@@ -22,9 +22,9 @@ class Tapsalesmate(Tap):
     name = "tap-salesmate"
     
     config_jsonschema = th.PropertiesList(
-        th.Property("lastActivityAt", th.DateTimeType, required=False),
-        th.Property("instance_name", th.StringType, required=False),
-        th.Property("sessionToken", th.StringType, required=False)
+        th.Property("start_date", th.DateTimeType, required=True),
+        th.Property("instance_name", th.StringType, required=True),
+        th.Property("sessionToken", th.StringType, required=True)
     ).to_dict()
 
     def discover_streams(self) -> List[Stream]:
