@@ -66,7 +66,7 @@ class ActivityStream(salesmateStream):
         th.Property("duration", th.NumberType),
         th.Property("isCalendarInvite", th.NumberType),
         th.Property("relatedToModule", th.StringType),
-        th.Property("relatedToId", th.NumberType),
+        th.Property("relatedToId", th.StringType),
         th.Property("outcome", th.StringType),
         th.Property("createdLatitude", th.NumberType),
         th.Property("createdLongitude", th.NumberType),
