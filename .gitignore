@@ -1,6 +1,3 @@
-# Secrets and internal config files
-.secrets/
-
 config_sample.json
 state.json
 output.txt
