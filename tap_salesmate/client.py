@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Union, List, Iterable, cast
 from singer_sdk.streams import RESTStream
 import datetime as dt
+from datetime import timedelta
 import json
 
 API_DATE_FORMAT = '%b %d, %Y %H:%M %p'
@@ -53,7 +54,7 @@ class salesmateStream(RESTStream):
         """Prepare the data payload for the REST API request."""
         payload: dict = {}
         payload = self.payload
-        state_ts = self.get_starting_timestamp(context).strftime(RFC_DATE_FORMAT)
+        state_ts = (self.get_starting_timestamp(context) - timedelta(days=1)).strftime(RFC_DATE_FORMAT)
         state_ts = self.convert_date_format(state_ts, RFC_DATE_FORMAT, API_DATE_FORMAT)
         payload['query']['group']['rules'][0]["data"] = state_ts
         return json.dumps(payload)
@@ -88,8 +89,8 @@ class salesmateStream(RESTStream):
             
             if self.name == 'Activity':
                 if 'relatedToId' in row:
-                    if row['relatedToId'] != '':
-                        row['relatedToId'] = str(row['relatedToId']) 
+                    if row['relatedToId'] == '':
+                        row['relatedToId'] = None 
                         
 
             if 'PrimaryCompany' in row and bool(row['PrimaryCompany']):
