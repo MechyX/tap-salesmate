@@ -1,6 +1,6 @@
 # tap-salesmate
 
-`tap-salesmate` is a Singer tap for salesmate.
+`tap-salesmate` is a Singer tap for salesmate, I wrote this tap specifically to work with Target DBs like target-postgres.
 
 Available Streams
 - Activity
@@ -13,7 +13,9 @@ Built with the Meltano [SDK](https://gitlab.com/meltano/singer-sdk) for Singer T
 
 ### Accepted Config Options
 
-- [sessionToken, instance_name, start_date] `Developer TODO:` Provide a list of config options accepted by the tap.
+- sessionToken
+- start_date
+- instance_name
 
 A full list of supported settings and capabilities for this
 tap is available by running:
